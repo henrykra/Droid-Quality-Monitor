@@ -1,0 +1,13 @@
+{
+  "extension": "omni.graph.tutorials",
+  "nodes": {
+    "Henry": {
+      "description": [
+        "Test from nodes.json"
+      ],
+      "version": 1,
+      "uiName": "Henry",
+      "language": "python"
+    }
+  }
+}

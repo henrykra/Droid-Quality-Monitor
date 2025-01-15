@@ -1,0 +1,47 @@
+{
+    "OgnSampleDefectColor": {
+        "version": 1,
+        "scheduling": "compute-on-request",
+        "language": "python",
+        "categories": {"Replicator:Core": "Core Replicator nodes"},
+        "description": "Selects a random color that is different enough from the target color",
+        "metadata":
+        {
+           "uiName": "Sample Defect Color"
+        },
+        "state": {
+            "$comment": ["Internal state"]
+        },
+        "inputs": {
+            "target": {
+                "description": ["the target/non-defective color value"],
+                "type": "float[3]"
+            },
+            "seed": {
+                "description": ["Random Number Generator seed. A value of less than 0 will indicate using the global seed."],
+                "type": "int",
+                "default": -1
+            },
+            "numSamples": {
+                "description": ["number of samples to generate"],
+                "type": "int",
+                "default": 1
+            },
+            "outputType": {
+                "description": ["The helper attribute to resolve output's type"],
+                "type": "string"
+            }
+        },
+        "outputs": {
+            "samples": {
+                "description": ["sampled results"],
+                "type": "any"
+            },
+            "numSamples": {
+                "description": ["number of samples to generate"],
+                "type": "int",
+                "default": 1
+            }
+        }
+    }
+}

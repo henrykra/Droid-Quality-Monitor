@@ -1,0 +1,48 @@
+[package]
+title = "Henry Extension"
+version = "1"
+category = "Graph"
+readme = "docs/README.md"
+changelog = "docs/CHANGELOG.md"
+description = "Contains a collection of tutorials on constructing OmniGraph nodes."
+repository = ""
+keywords = ["kit", "omnigraph", "core", "tutorials"]
+python.import_mode = "ParallelThread"
+preview_image = "data/preview.png"
+icon = "data/icon.svg"
+writeTarget.kit = true
+support_level = "Sample"
+
+# Main Python module, available as "import omni.graph.tutorials"
+[[python.module]]
+name = "omni.graph.henry"
+
+# Watch the .ogn files for hot reloading (only works for Python files)
+[fswatcher.patterns]
+include = ["*.ogn", "*.py"]
+
+# Other extensions on which this one relies
+[dependencies]
+"omni.graph.core" = { version = "2.177.1" }
+"omni.graph" = { version = "1.139.0" }
+"omni.graph.tools" = { version = "1.77.0" }
+
+
+[[test]]
+timeout = 300
+stdoutFailPatterns.exclude = [
+    # Exclude carb.events leak that only shows up locally
+    "*[Error] [carb.events.plugin]*PooledAllocator*",
+]
+pythonTests.unreliable = [
+]
+dependencies = [
+    "omni.graph.nodes",
+    "omni.graph.examples.cpp",
+    "omni.graph.examples.python",
+    "omni.kit.commands",
+]
+cppTests.libraries = [
+    "bin/${lib_prefix}omni.graph.tutorials.tests${lib_ext}",
+]
+
